@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "79240507145",
+    "firebase_url": "https://payana-1da79.firebaseio.com",
+    "project_id": "payana-1da79",
+    "storage_bucket": "payana-1da79.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79240507145:android:b10e94efadebed06512dd8",
+        "android_client_info": {
+          "package_name": "com.example.sidebaranimationflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "79240507145-1a2rca7okl1lpr236n8tm2j8kish5cjd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sidebaranimationflutter",
+            "certificate_hash": "dbfd72913f0ef34a55af1fa08d6b432d8a5be5b9"
+          }
+        },
+        {
+          "client_id": "79240507145-6etgc37lrnl4pb6r9ufjcqr0gogchrio.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwnjfhw9ycYfp9o5xevbpxbwIQ0uRftyY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "79240507145-6etgc37lrnl4pb6r9ufjcqr0gogchrio.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
