@@ -1,13 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sidebaranimationflutter/bloc/navigation_block/navigation_bloc.dart';
 import 'sidebar.dart';
 
 class SideBarLayout extends StatelessWidget with NavigationStates{
-  final FirebaseUser firebaseUser;
+//  final FirebaseUser firebaseUser;
 
-  SideBarLayout({this.firebaseUser});
+//  SideBarLayout({this.firebaseUser});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

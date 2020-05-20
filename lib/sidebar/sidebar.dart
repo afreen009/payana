@@ -17,7 +17,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
   StreamController<bool> isSidebarOpenedStreamController;
   Stream<bool> isSidebarOpenedStream;
   StreamSink<bool> isSidebarOpenedSink;
-  final _animationDuration = const Duration(milliseconds: 400);
+  final _animationDuration = const Duration(milliseconds: 300);
 
   @override
   void initState() {
@@ -61,45 +61,67 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
           duration: _animationDuration,
           top: 0,
           bottom: 0,
-          left: isSideBarOpenedAsync.data ? 0 : -screenWidth,
+          left: isSideBarOpenedAsync.data ? 0 : -screenWidth +10,
           right: isSideBarOpenedAsync.data ? 0 : screenWidth - 45,
           child: Row(
             children: <Widget>[
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 0),
-                  color:  Colors.indigo,
+                  color:  Colors.white,
                   child: Column(
                     children: <Widget>[
-                      SizedBox(
-                        height: 100,
-                      ),
+//                      SizedBox(
+//                        height: 30,
+//                      ),
                       Container(
-                        margin: EdgeInsets.only(top: 0),
-                        padding: EdgeInsets.only(top: 0),
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            child: Icon(
-                              Icons.person,
-                              color: Colors.amber,
+                        margin: EdgeInsets.only(top: 0, left: 0),
+                        padding: EdgeInsets.only(left: 0),
+                        color: Colors.blueGrey,
+                        height: 180,
+                        child: Center(
+                          child: ListTile(
+//                          leading: CircleAvatar(
+//                            backgroundColor: Colors.lightBlueAccent,
+//                            child: Icon(
+//                              Icons.person,
+//                              color: Colors.white,
+//                            ),
+//                            radius: 40,
+//                          ),
+                            title: Text(
+                              "8618210228",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w800),
                             ),
-                            radius: 40,
-                          ),
-                          title: Text(
-                            "8618210228",
-                            style: TextStyle(
+                            trailing: CircleAvatar(
+                              backgroundColor: Colors.amber,
+                              child: Icon(
+                                Icons.person,
                                 color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w800),
+                              ),
+                              radius: 40,
+                            ),
                           ),
                         ),
                       ),
-                      Divider(
-                        height: 64,
-                        thickness: 0.5,
-                        color: Colors.white.withOpacity(0.3),
-                        indent: 32,
-                        endIndent: 32,
+//                      Divider(
+//                        height: 4,
+//                        thickness: 3.0,
+//                        color: Colors.amber,
+//                        indent: 12,
+//                        endIndent: 32,
+//                      ),
+                      MenuItem(
+                        icon: Icons.home,
+                        title: "Home",
+                        onTap: () {
+                          onIconPressed();
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.HomeEvent);
+                        },
                       ),
                       MenuItem(
                         icon: Icons.history,
@@ -107,16 +129,25 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         onTap: () {
                           onIconPressed();
                           BlocProvider.of<NavigationBloc>(context)
-                              .add(NavigationEvents.MapClickedEvent);
+                              .add(NavigationEvents.RideHistoryEvent);
                         },
                       ),
                       MenuItem(
                         icon: Icons.attach_money,
-                        title: "Payment",
+                        title: "Payments",
                         onTap: () {
                           onIconPressed();
                           BlocProvider.of<NavigationBloc>(context)
-                              .add(NavigationEvents.MyAccountClickedEvent);
+                              .add(NavigationEvents.PaymentEvent);
+                        },
+                      ),
+                      MenuItem(
+                        icon: Icons.attach_money,
+                        title: "KYC",
+                        onTap: () {
+                          onIconPressed();
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.VerificationEvent);
                         },
                       ),
                       MenuItem(
@@ -125,7 +156,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         onTap: () {
                           onIconPressed();
                           BlocProvider.of<NavigationBloc>(context)
-                              .add(NavigationEvents.MyOrdersClickedEvent);
+                              .add(NavigationEvents.PromoCode);
                         },
                       ),
 
@@ -135,6 +166,36 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         onTap: () {
                           onIconPressed();
                           AuthService().signOut();
+                        },
+                      ),
+//                      Divider(
+//                        height: 64,
+//                        thickness: 0.5,
+//                        color: Colors.grey,
+//                        indent: 32,
+//                        endIndent: 0,
+//                      ),
+                      Divider(
+                        height: 10,
+                        thickness: 1.0,
+                        color: Colors.amber,
+                        indent: 32,
+                        endIndent: 32,
+                      ),
+                      MenuItem(
+                        icon: Icons.info,
+                        title: "About",
+                        onTap: () {
+//                          onIconPressed();
+//                          BlocProvider.of<NavigationBloc>(context)
+//                              .add(NavigationEvents.MyOrdersClickedEvent);
+                        },
+                      ),
+
+                      MenuItem(
+                        icon: Icons.filter_none,
+                        title: "Terms & Conditions",
+                        onTap: () {
                         },
                       ),
                     ],
@@ -152,7 +213,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                     child: Container(
                       width: 45,
                       height: 110,
-                      color: Colors.indigo,
+                      color: Colors.blueGrey,
                       alignment: Alignment.centerLeft,
                       child: AnimatedIcon(
                         progress: _animationController.view,
@@ -177,10 +238,8 @@ class CustomMenuClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     Paint paint = Paint();
     paint.color = Colors.white;
-
     final width = size.width;
     final height = size.height;
-
     Path path = Path();
     path.moveTo(0, 0);
     path.quadraticBezierTo(0, 8, 10, 16);

@@ -9,6 +9,9 @@ import "GoogleMaps/GoogleMaps.h"
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GMSServices provideAPIKey:@"AIzaSyDo-UsLxFtsbvMojG3_VARdLl-IQ6pGwbc";
+    var flutter_native_splash = 1
+    UIApplication.shared.isStatusBarHidden = false
+
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }

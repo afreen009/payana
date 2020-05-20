@@ -13,20 +13,20 @@ class LocationService {
   StreamController<UserLocation>.broadcast();
   LocationService() {
     // Request permission to use location
-    location.requestPermission().then((granted) {
-      print(granted);
-      if (granted != null) {
-        // If granted listen to the onLocationChanged stream and emit over our controller
-        location.onLocationChanged.listen((locationData) {
-          if (locationData != null) {
-            _locationController.add(UserLocation(
-              latitude: locationData.latitude,
-              longitude: locationData.longitude,
-            ));
-          }
-        });
-      }
-    });
+//    location.requestPermission().then((granted) {
+//      print(granted);
+//      if (granted != null) {
+//        // If granted listen to the onLocationChanged stream and emit over our controller
+//        location.onLocationChanged.listen((locationData) {
+//          if (locationData != null) {
+//            _locationController.add(UserLocation(
+//              latitude: locationData.latitude,
+//              longitude: locationData.longitude,
+//            ));
+//          }
+//        });
+//      }
+//    });
   }
 
   Stream<UserLocation> get locationStream => _locationController.stream;

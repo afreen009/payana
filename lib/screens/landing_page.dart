@@ -1,6 +1,9 @@
+
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_text/gradient_text.dart';
+import 'package:flutter/services.dart';
 import 'package:sidebaranimationflutter/screens/page_indicator.dart';
 import 'data.dart';
 
@@ -23,7 +26,7 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
       initialPage: currentPage,
     );
     animationController =
-        AnimationController(duration: Duration(milliseconds: 300), vsync: this);
+        AnimationController(duration: Duration(milliseconds: 000), vsync: this);
     _scaleAnimation = Tween(begin: 0.6, end: 1.0).animate(animationController);
   }
 
@@ -35,15 +38,16 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
+//    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+//      statusBarColor: Colors.transparent,
+//      statusBarIconBrightness: Brightness.dark,
+//      statusBarBrightness:
+//      Platform.isAndroid ? Brightness.dark : Brightness.light,
+//      systemNavigationBarColor: Colors.transparent,
+//      systemNavigationBarDividerColor: Colors.transparent,
+//      systemNavigationBarIconBrightness: Brightness.dark,
+//    ));
     return Container(
-//      decoration: BoxDecoration(
-//        gradient: LinearGradient(
-//            colors: Colors.white,
-//            tileMode: TileMode.clamp,
-//            begin: Alignment.topCenter,
-//            stops: [0.0, 1.0],
-//            end: Alignment.bottomCenter),
-//      ),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: new Stack(
@@ -83,52 +87,6 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Image.asset(page.imageUrl),
-                        Container(
-                          margin: EdgeInsets.only(left: 12.0),
-                          height: 100.0,
-                          child: Stack(
-                            children: <Widget>[
-                              Opacity(
-                                opacity: .10,
-                                child: GradientText(
-                                  page.title,
-                                  gradient: LinearGradient(
-                                      colors: pageList[index].titleGradient),
-                                  style: TextStyle(
-                                      fontSize: 100.0,
-                                      fontFamily: "Montserrat-Black",
-                                      letterSpacing: 1.0),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 30.0, left: 22.0),
-                                child: GradientText(
-                                  page.title,
-                                  gradient: LinearGradient(
-                                      colors: pageList[index].titleGradient),
-                                  style: TextStyle(
-                                    fontSize: 70.0,
-                                    fontFamily: "Montserrat-Black",
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 34.0, top: 12.0),
-                          child: Transform(
-                            transform:
-                            Matrix4.translationValues(0, 50.0 * (1 - y), 0),
-                            child: Text(
-                              page.body,
-                              style: TextStyle(
-                                  fontSize: 20.0,
-                                  fontFamily: "Montserrat-Medium",
-                                  color: Color(0xFF9B9B9B)),
-                            ),
-                          ),
-                        )
                       ],
                     );
                   },

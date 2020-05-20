@@ -10,9 +10,10 @@ class PageIndicator extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 4.0),
         child: Container(
-          height: 4.0,
+          height: 6.0,
           decoration: BoxDecoration(
-              color: isActive ? Colors.white : Color(0xFF3E4750),
+              color: isActive ? Colors.white : Colors.blueGrey,
+              borderRadius: BorderRadius.all(Radius.circular(6.0)),
               boxShadow: [
                 BoxShadow(
                     color: Colors.black12,

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sidebaranimationflutter/pages/mobnumber.dart';
+import 'file:///C:/Users/user/AndroidStudioProjects/sidebar_animation_flutter/lib/src/util/mobnumber.dart';
 import 'package:sidebaranimationflutter/sidebar/sidebar_layout.dart';
-
-
 
 class RootScreen extends StatefulWidget {
   @override
@@ -23,7 +21,7 @@ class _RootScreenState extends State<RootScreen> {
         } else {
           if (snapshot.hasData) {
             return new SideBarLayout(
-              firebaseUser: snapshot.data,
+//              firebaseUser: snapshot.data,
             );
           } else {
             return LoginScreen();
